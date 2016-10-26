@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<script src="js/angular.js"></script>
+<script src="js/module-file.js"></script>
+<body>
+<div ng-app="appvalidation" ng-controller="ctrlForm">
+    <form name="form" class="css-form" novalidate>
+        <label for="name">Name :</label>
+        <input type="text" ng-model="player.name" valid-name name="name" validname required />
+         <span ng-show="form.name.$error.required" class="error">Name Required</span>
+         <span ng-show="form.name.$error.name" class="error">Name only allow character, dot and space</span><br>
+         
+        <label for="email">Email :</label>
+        <input type="email" ng-model="player.email" valid-email name="email" validemail required/>
+         <span ng-show="form.email.$error.email">Email invalid</span>
+         <span ng-show="form.email.$error.required" class="error">Email Required</span><br>
+         
+        <label for="url">Url :</label>
+        <input type="text" ng-model="player.url" valid-url name="url" validurl required/>
+         <span ng-show="form.url.$error.url" class="error">URL not avaible </span>
+         <span ng-show="form.url.$error.required" class="error">URL Required</span><br>
+         
+        <label for="age">Age :</label>
+        <input type="text" ng-model="player.age" valid-age name="age" validage required/>
+         <span ng-show="form.age.$error.age" class="error"> To old</span>
+         <span ng-show="form.age.$error.required" class="error">Age Required</span><br>
+        <input type="submit" ng-click="save_data(player)" value="Save Player" /> <br />
+    </form>
+    <pre>{{saved | json}}</pre>
+    <hr>
+    <h3>Result Data</h3>
+    <p>Name : <span ng-bind="saved.name"></span></p>
+    <p>Email : <span ng-bind="saved.email"></span></p>
+    <p>Url : <span ng-bind="saved.url"></span></p>
+    <p>Age : <span ng-bind="saved.age"></span></p>
+</div>
+</body>
+</html>
